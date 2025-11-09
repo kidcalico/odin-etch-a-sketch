@@ -23,6 +23,17 @@ for(i = 0; i < (size*size); i++) {
     pixel.style.boxSizing = "border-box";
     pixel.style.width = pixelSize + "px";
     pixel.style.backgroundColor = "black";
-    pixel.style.border = "0.1px solid white";
+    // pixel.style.border = "0.1px solid white";
+    pixel.classList.add("pixel");
     screen.appendChild(pixel);
 }
+
+// Change pixel color when the mouse enters a pixel
+
+const pixels = document.querySelectorAll(".pixel");
+
+pixels.forEach((pixel) => {
+    pixel.addEventListener("mouseenter", (event) => {
+        event.target.style.backgroundColor = "white";
+    });
+});
