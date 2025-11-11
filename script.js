@@ -20,9 +20,15 @@ border.appendChild(screen);
 const myRange = document.querySelector("#myRange");
 myRange.addEventListener('change', screenSize);
 
-screenSizeInit();
+// Add clear button
+const slideContainer = document.querySelector(".slidecontainer");
+const clearBtn = document.createElement("button");
+clearBtn.textContent = "Clear";
+clearBtn.addEventListener("click", screenSize);
+slideContainer.appendChild(clearBtn);
 
 // Fill the screen with pixels
+screenSizeInit();
 function screenSizeInit () {
     // Create variables to calculate the size of pixels based on the
     // desired dimensions (size) and screen size
@@ -50,6 +56,7 @@ function screenSizeInit () {
             event.target.style.backgroundColor = "black";
         });
     });
+    resVal();
 }
 
 // Change screen resolution based on slider
@@ -86,11 +93,20 @@ function screenSize () {
             event.target.style.backgroundColor = "black";
         });
     });
+    resVal();
 }
 
-// Add clear button
+function resVal() {
+    // Display resolution value. Clear old text.
 
-const clearBtn = document.createElement("button");
-clearBtn.textContent = "Clear";
-clearBtn.addEventListener("click", screenSize);
-container.appendChild(clearBtn);
+    const resolution = document.createElement("div");
+    resolution.classList.add("val");
+    const val = document.querySelector(".val");
+    // if (val.textContent != '') {
+    //     val.textContent = '';
+    // }
+
+    resolution.textContent = `Resolution: ${myRange.value} x ${myRange.value}`;
+    // slideContainer.removeChild();
+    slideContainer.appendChild(resolution);
+}
