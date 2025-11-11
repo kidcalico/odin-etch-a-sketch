@@ -18,14 +18,23 @@ border.appendChild(screen);
 // Create slider which changes the resolution
 
 const myRange = document.querySelector("#myRange");
-myRange.addEventListener('change', screenSize);
+myRange.addEventListener("change", screenSize);
 
 // Add clear button
-const slideContainer = document.querySelector(".slidecontainer");
 const clearBtn = document.querySelector("#clearbtn");
 clearBtn.textContent = "Clear";
 clearBtn.addEventListener("click", screenSize);
 // container.appendChild(clearBtn);
+
+// Add button to change pixel color to black on mouseover
+const blackBtn = document.querySelector("#blackbtn");
+blackBtn.textContent = "Black";
+blackBtn.addEventListener("click", blackPix);
+
+// Add button to change pixels to random color on mouseover
+const colorBtn = document.querySelector("#colorbtn");
+colorBtn.textContent = "Random Colors";
+colorBtn.addEventListener("click", colorPix);
 
 // Fill the screen with pixels
 screenSizeInit();
@@ -89,10 +98,30 @@ function blackPix() {
     });
 }
 
+function colorPix() {
+    // Change pixel color when the mouse enters a pixel
+    const pixels = document.querySelectorAll(".pixel");
+    pixels.forEach((pixel) => {
+        pixel.addEventListener("mouseenter", (event) => {
+            const color = getColor();
+            event.target.style.backgroundColor = `${color}`;
+        });
+    });
+}
+
+// Write function for random RGB color generation
+function getColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
 function showRes() {
     // Display resolution value. Clear old text.
     // slideContainer.removeChild(lastChild);
     const resolution = document.createElement("div");
+    const slideContainer = document.querySelector(".slidecontainer");
     resolution.textContent = `Resolution: ${myRange.value} x ${myRange.value}`;
     slideContainer.appendChild(resolution);
     slideContainer.removeChild(resolution.previousSibling);
