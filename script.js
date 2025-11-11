@@ -22,14 +22,14 @@ myRange.addEventListener('change', screenSize);
 
 // Add clear button
 const slideContainer = document.querySelector(".slidecontainer");
-const clearBtn = document.createElement("button");
+const clearBtn = document.querySelector("#clearbtn");
 clearBtn.textContent = "Clear";
 clearBtn.addEventListener("click", screenSize);
-container.appendChild(clearBtn);
+// container.appendChild(clearBtn);
 
 // Fill the screen with pixels
 screenSizeInit();
-function screenSizeInit () {
+function screenSizeInit() {
     // Create variables to calculate the size of pixels based on the
     // desired dimensions (size) and screen size
     const size = myRange.value;
@@ -47,21 +47,12 @@ function screenSizeInit () {
         pixel.classList.add("pixel");
         screen.appendChild(pixel);
     }
-    
-    // Change pixel color when the mouse enters a pixel
-    const pixels = document.querySelectorAll(".pixel");
-    
-    pixels.forEach((pixel) => {
-        pixel.addEventListener("mouseenter", (event) => {
-            event.target.style.backgroundColor = "black";
-        });
-    });
-    resVal();
+    blackPix();
+    showRes();
 }
 
 // Change screen resolution based on slider
-function screenSize () {
-
+function screenSize() {
     // Create variables to calculate the size of pixels based on the
     // desired dimensions (size) and screen size
     const size = myRange.value;
@@ -84,30 +75,24 @@ function screenSize () {
         pixel.classList.add("pixel");
         screen.appendChild(pixel);
     }
-    
+    blackPix();
+    showRes();
+}
+
+function blackPix() {
     // Change pixel color when the mouse enters a pixel
     const pixels = document.querySelectorAll(".pixel");
-    
     pixels.forEach((pixel) => {
         pixel.addEventListener("mouseenter", (event) => {
             event.target.style.backgroundColor = "black";
         });
     });
-    resVal();
 }
 
-function resVal() {
+function showRes() {
     // Display resolution value. Clear old text.
     // slideContainer.removeChild(lastChild);
-
     const resolution = document.createElement("div");
-    resolution.classList.add("val");
-    let val = document.querySelector(".val");
-    console.log(val);
-    // if (val !== '') {
-    //     val = '';
-    // }
-
     resolution.textContent = `Resolution: ${myRange.value} x ${myRange.value}`;
     slideContainer.appendChild(resolution);
     slideContainer.removeChild(resolution.previousSibling);
