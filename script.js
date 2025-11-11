@@ -18,7 +18,8 @@ border.appendChild(screen);
 // Create slider which changes the resolution
 
 const myRange = document.querySelector("#myRange");
-myRange.addEventListener("change", screenSize);
+myRange.addEventListener("input", screenSize);
+// myRange.addEventListener("change", screenSize);
 
 // Add clear button
 const clearBtn = document.querySelector("#clearbtn");
