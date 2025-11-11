@@ -5,7 +5,7 @@ const container = document.querySelector("#container");
 // Create a border around the screen element
 
 const border = document.createElement("div");
-border.style.cssText = "width: 640px; height: 640px; background-color: salmon; border-radius: 10px; margin: auto; align-content: center;";
+border.style.cssText = "width: 640px; height: 640px; background-color: #B7161E; border-radius: 10px; margin: auto; align-content: center;";
 container.appendChild(border);
 
 // Create screen element within the container
@@ -25,7 +25,7 @@ const slideContainer = document.querySelector(".slidecontainer");
 const clearBtn = document.createElement("button");
 clearBtn.textContent = "Clear";
 clearBtn.addEventListener("click", screenSize);
-slideContainer.appendChild(clearBtn);
+container.appendChild(clearBtn);
 
 // Fill the screen with pixels
 screenSizeInit();
@@ -98,15 +98,17 @@ function screenSize () {
 
 function resVal() {
     // Display resolution value. Clear old text.
+    // slideContainer.removeChild(lastChild);
 
     const resolution = document.createElement("div");
     resolution.classList.add("val");
-    const val = document.querySelector(".val");
-    // if (val.textContent != '') {
-    //     val.textContent = '';
+    let val = document.querySelector(".val");
+    console.log(val);
+    // if (val !== '') {
+    //     val = '';
     // }
 
     resolution.textContent = `Resolution: ${myRange.value} x ${myRange.value}`;
-    // slideContainer.removeChild();
     slideContainer.appendChild(resolution);
+    slideContainer.removeChild(resolution.previousSibling);
 }
