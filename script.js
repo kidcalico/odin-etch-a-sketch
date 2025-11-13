@@ -45,9 +45,9 @@ colorBtn.textContent = "Random Colors";
 colorBtn.addEventListener("click", colorPix);
 
 // Add button to shade pixel ten percent darker
-const shaderBtn = document.querySelector("#shaderbtn");
-shaderBtn.textContent = "Shader";
-shaderBtn.addEventListener("click", shadePix);
+// const shaderBtn = document.querySelector("#shaderbtn");
+// shaderBtn.textContent = "Shader";
+// shaderBtn.addEventListener("click", shadePix);
 
 // Fill the screen with pixels
 screenSizeInit();
