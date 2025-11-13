@@ -3,15 +3,15 @@ const container = document.querySelector("#screen-container");
 
 // Create a border around the screen element
 const border = document.querySelector(".border");
-border.style.cssText = "width: 640px; height: 700px; background-color: #B7161E; border-radius: 10px; margin: auto; align-content: center; box-shadow: 0px 0px 20px #0b2005ff;";
+border.style.cssText = "width: 640px; height: 720px; background-color: #B7161E; border-radius: 10px; margin: auto; align-content: center; box-shadow: 5px 5px 0px #FACE2D;";
 
 // Create screen element within the container
 const screen = document.querySelector(".screen");
-screen.style.cssText = "width: 800x; height: 450px; background-color: lightgray; margin: auto; padding: 0; display: flex; flex-wrap: wrap;";
+screen.style.cssText = "width: 540px; height: 540px; background-color: lightgray; margin: auto; padding: 0; display: flex; flex-wrap: wrap;";
 
 // Control center
 const controlCenter = document.querySelector(".controlcenter");
-controlCenter.style.cssText = "width: 500px; margin: auto; display: flex; align-content: center; justify-content: space-around;";
+controlCenter.style.cssText = "width: 500px; margin: 10px auto; display: flex; align-content: center; justify-content: space-between;";
 
 // Style .slidecontainer
 const slideContainer = document.querySelector(".slidecontainer");
@@ -34,7 +34,7 @@ clearBtn.addEventListener("click", screenSize);
 
 // Add button to change pixel color to black on mouseover
 const blackBtn = document.querySelector("#blackbtn");
-blackBtn.textContent = "Black";
+blackBtn.textContent = "Normal";
 blackBtn.addEventListener("click", blackPix);
 
 // Add button to change pixels to random color on mouseover
@@ -50,6 +50,7 @@ colorBtn.addEventListener("click", colorPix);
 // Fill the screen with pixels
 screenSizeInit();
 function screenSizeInit() {
+
     pixelFill();
     blackPix();
     showRes();
@@ -59,6 +60,7 @@ function screenSizeInit() {
 function screenSize() {
     // Clear old resolution
     screen.innerHTML = '';
+    // Fill screen with pixels
     pixelFill();
     blackPix();
     showRes();
@@ -71,16 +73,11 @@ function pixelFill () {
     const size = slider.value;
     const canvasSize = screen.offsetWidth;
     const pixelSize = (canvasSize/size);
-    console.log(slider.value);
-    console.log(size);
-    for(i = 0; i < (size*(size*9/16)); i++) {
+    for(i = 0; i < (size*size); i++) {
         const pixel = document.createElement("div");
-        // pixel.style.cssText = "box-sizing: border-box; background-color: gray; flex: 1; border: 0.1px solid black;";
         pixel.style.boxSizing = "border-box";
         pixel.style.width = pixelSize + "px";
-        pixel.style.height = pixelSize + "px";
-        pixel.style.backgroundColor = "lightgray";
-        // pixel.style.border = "0.1px solid white";
+        pixel.style.backgroundColor = "#fff7daff";
         pixel.classList.add("pixel");
         screen.appendChild(pixel);
     }
@@ -91,7 +88,7 @@ function blackPix() {
     const pixels = document.querySelectorAll(".pixel");
     pixels.forEach((pixel) => {
         pixel.addEventListener("mouseenter", (event) => {
-            event.target.style.backgroundColor = "black";
+            event.target.style.backgroundColor = "#0c042a";
             event.target.style.opacity = 1;
         });
     });
@@ -132,14 +129,15 @@ function getColor() {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
     const b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g}, ${b}, 0.5)`;
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
 function showRes() {
     // Display resolution value. Clear old text.
     // slideContainer.removeChild(lastChild);
     const resolution = document.createElement("div");
-    resolution.textContent = `${slider.value} x ${slider.value*9/16}`;
+    resolution.textContent = `${slider.value} x ${slider.value}`;
+    resolution.style.textAlign = "center";
     slideContainer.appendChild(resolution);
     slideContainer.removeChild(resolution.previousSibling);
 }

@@ -1,5 +1,5 @@
 body {
-    background-color: #dbffa4;
+    background-color: #0c042a;
 }
 
 #screen-container {
@@ -12,12 +12,13 @@ body {
     box-sizing: border-box;
     color: #FACE2D;
     font-family: "Bytesized", Futura, sans-serif;
+    font-size: 18px;
     color: #FACE2D;
 }
 
 h1 {
     text-align: center;
-    font-size: 3em;
+    font-size: 48px;
     margin: 10px;
 }
 
@@ -26,14 +27,14 @@ button {
     border: none;
     border-radius: 5px;
     padding: 5px;
-    color: #000;
+    color: #0c042a;
     font-family: "Bytesized", Futura, sans-serif;
     font-size: 18px;
-    box-shadow: 0 3px #000;
+    box-shadow: 0 3px #0c042a;
 }
 
 button:hover {
-    background-color: #000;
+    background-color: #0c042a;
     color: #FACE2D;
     box-shadow: 0 3px #FACE2D;
 }
@@ -41,4 +42,34 @@ button:hover {
 button:active {
     box-shadow: 0 1px #FACE2D;
     transform: translateY(2px);
+}
+
+#slider {
+    -webkit-appearance: none;
+    width: 150px;
+    height:10px;
+    border-radius: 5px;
+    background: #0C042A;
+    outline: none;
+}
+
+#slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FACE2D;
+}
+
+#slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FACE2D;
+    border: none;
+}
+
+.res {
+    text-align: center;
 }
