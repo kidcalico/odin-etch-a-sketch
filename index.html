@@ -6,16 +6,25 @@
     <title>TOP: Etch-a-Sketch</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="container"></div>
-    <div class="slidecontainer">
-        <input type="range" min="16" max="100" value="10" class="slider" id="myRange">
+    <div id="container">
+        
     </div>
-    <div class="buttons">
-        <button id="clearbtn"></button>
-        <button id="blackbtn"></button>
-        <button id="colorbtn"></button>
+    <div class="controlcenter">
+        <div class="slidecontainer">
+            <div>Change Resolution:</div>
+            <input type="range" min="16" max="100" value="10" id="slider">
+        </div>
+        <div class="buttons">
+            <button id="blackbtn"></button>
+            <button id="colorbtn"></button>
+            <button id="shaderbtn"></button>
+            <button id="clearbtn"></button>
+        </div>
     </div>
 </body>
 </html>

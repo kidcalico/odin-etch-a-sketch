@@ -1,25 +1,32 @@
 // Establish the container as a variable
-
 const container = document.querySelector("#container");
 
 // Create a border around the screen element
-
 const border = document.createElement("div");
 border.style.cssText = "width: 640px; height: 640px; background-color: #B7161E; border-radius: 10px; margin: auto; align-content: center;";
 container.appendChild(border);
 
 // Create screen element within the container
-
 const screen = document.createElement("div");
 screen.style.cssText = "width: 540px; height: 540px; background-color: lightgray; margin: auto; padding: 0; display: flex; flex-wrap: wrap;";
 border.appendChild(screen);
 
+// Control center
+const controlCenter = document.querySelector(".controlcenter");
+controlCenter.style.cssText = "width: 500px; margin: auto; display: flex; align-content: center;";
+
+// Style .slidecontainer
+const slideContainer = document.querySelector(".slidecontainer");
+slideContainer.style.cssText = "flex: 1;";
+
+// Style buttons
+const buttons = document.querySelector(".buttons");
+buttons.style.cssText = "flex: 2; align-content: center;";
 
 // Create slider which changes the resolution
-
-const myRange = document.querySelector("#myRange");
-myRange.addEventListener("input", screenSize);
-// myRange.addEventListener("change", screenSize);
+const slider = document.querySelector("#slider");
+slider.addEventListener("input", screenSize);
+// slider.addEventListener("change", screenSize);
 
 // Add clear button
 const clearBtn = document.querySelector("#clearbtn");
@@ -37,15 +44,20 @@ const colorBtn = document.querySelector("#colorbtn");
 colorBtn.textContent = "Random Colors";
 colorBtn.addEventListener("click", colorPix);
 
+// Add button to shade pixel ten percent darker
+const shaderBtn = document.querySelector("#shaderbtn");
+shaderBtn.textContent = "Shader";
+shaderBtn.addEventListener("click", shadePix);
+
 // Fill the screen with pixels
 screenSizeInit();
 function screenSizeInit() {
     // Create variables to calculate the size of pixels based on the
     // desired dimensions (size) and screen size
-    const size = myRange.value;
+    const size = slider.value;
     const canvasSize = screen.offsetWidth;
     const pixelSize = (canvasSize/size);
-    console.log(myRange.value);
+    console.log(slider.value);
     console.log(size);
     for(i = 0; i < (size*size); i++) {
         const pixel = document.createElement("div");
@@ -65,10 +77,10 @@ function screenSizeInit() {
 function screenSize() {
     // Create variables to calculate the size of pixels based on the
     // desired dimensions (size) and screen size
-    const size = myRange.value;
+    const size = slider.value;
     const canvasSize = screen.offsetWidth;
     const pixelSize = (canvasSize/size);
-    console.log(myRange.value);
+    console.log(slider.value);
     console.log(size);
 
     // Clear old resolution
@@ -95,6 +107,7 @@ function blackPix() {
     pixels.forEach((pixel) => {
         pixel.addEventListener("mouseenter", (event) => {
             event.target.style.backgroundColor = "black";
+            event.target.style.opacity = 1;
         });
     });
 }
@@ -106,6 +119,23 @@ function colorPix() {
         pixel.addEventListener("mouseenter", (event) => {
             const color = getColor();
             event.target.style.backgroundColor = `${color}`;
+            event.target.style.opacity = 1;
+        });
+    });
+}
+
+function shadePix() {
+    // Change pixel color when the mouse enters a pixel
+    const pixels = document.querySelectorAll(".pixel");
+    pixels.forEach((pixel) => {
+        pixel.addEventListener("mouseenter", (event) => {
+            const currentCol = this.style.backgroundColor;
+            // console.log(this.style.backgroundColor);
+            event.target.style.backgroundColor = currentCol;
+            const currentOp = this.style.opacity;
+            event.target.style.opacity = currentOp + 0.1;
+            // console.log(Number(currentOp));
+            // console.log(currentCol.value);
         });
     });
 }
@@ -115,15 +145,14 @@ function getColor() {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
     const b = Math.floor(Math.random() * 256);
-    return `rgb(${r}, ${g}, ${b})`;
+    return `rgb(${r}, ${g}, ${b}, 0.5)`;
 }
 
 function showRes() {
     // Display resolution value. Clear old text.
     // slideContainer.removeChild(lastChild);
     const resolution = document.createElement("div");
-    const slideContainer = document.querySelector(".slidecontainer");
-    resolution.textContent = `Resolution: ${myRange.value} x ${myRange.value}`;
+    resolution.textContent = `Resolution: ${slider.value} x ${slider.value}`;
     slideContainer.appendChild(resolution);
     slideContainer.removeChild(resolution.previousSibling);
 }
