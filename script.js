@@ -124,6 +124,8 @@ function colorPix() {
     });
 }
 
+
+// Shader function which adds 10% to given pixel. This does not work yet :(
 function shadePix() {
     // Change pixel color when the mouse enters a pixel
     const pixels = document.querySelectorAll(".pixel");
