@@ -1,19 +1,17 @@
 // Establish the container as a variable
-const container = document.querySelector("#container");
+const container = document.querySelector("#screen-container");
 
 // Create a border around the screen element
-const border = document.createElement("div");
-border.style.cssText = "width: 640px; height: 640px; background-color: #B7161E; border-radius: 10px; margin: auto; align-content: center;";
-container.appendChild(border);
+const border = document.querySelector(".border");
+border.style.cssText = "width: 640px; height: 700px; background-color: #B7161E; border-radius: 10px; margin: auto; align-content: center; box-shadow: 0px 0px 20px #0b2005ff;";
 
 // Create screen element within the container
-const screen = document.createElement("div");
-screen.style.cssText = "width: 540px; height: 540px; background-color: lightgray; margin: auto; padding: 0; display: flex; flex-wrap: wrap;";
-border.appendChild(screen);
+const screen = document.querySelector(".screen");
+screen.style.cssText = "width: 800x; height: 450px; background-color: lightgray; margin: auto; padding: 0; display: flex; flex-wrap: wrap;";
 
 // Control center
 const controlCenter = document.querySelector(".controlcenter");
-controlCenter.style.cssText = "width: 500px; margin: auto; display: flex; align-content: center;";
+controlCenter.style.cssText = "width: 500px; margin: auto; display: flex; align-content: center; justify-content: space-around;";
 
 // Style .slidecontainer
 const slideContainer = document.querySelector(".slidecontainer");
@@ -52,29 +50,22 @@ colorBtn.addEventListener("click", colorPix);
 // Fill the screen with pixels
 screenSizeInit();
 function screenSizeInit() {
-    // Create variables to calculate the size of pixels based on the
-    // desired dimensions (size) and screen size
-    const size = slider.value;
-    const canvasSize = screen.offsetWidth;
-    const pixelSize = (canvasSize/size);
-    console.log(slider.value);
-    console.log(size);
-    for(i = 0; i < (size*size); i++) {
-        const pixel = document.createElement("div");
-        // pixel.style.cssText = "box-sizing: border-box; background-color: gray; flex: 1; border: 0.1px solid black;";
-        pixel.style.boxSizing = "border-box";
-        pixel.style.width = pixelSize + "px";
-        pixel.style.backgroundColor = "lightgray";
-        // pixel.style.border = "0.1px solid white";
-        pixel.classList.add("pixel");
-        screen.appendChild(pixel);
-    }
+    pixelFill();
     blackPix();
     showRes();
 }
 
 // Change screen resolution based on slider
 function screenSize() {
+    // Clear old resolution
+    screen.innerHTML = '';
+    pixelFill();
+    blackPix();
+    showRes();
+}
+
+// Create function which fills screen with pixels
+function pixelFill () {
     // Create variables to calculate the size of pixels based on the
     // desired dimensions (size) and screen size
     const size = slider.value;
@@ -82,23 +73,17 @@ function screenSize() {
     const pixelSize = (canvasSize/size);
     console.log(slider.value);
     console.log(size);
-
-    // Clear old resolution
-    screen.innerHTML = '';
-
-    // Fill screen with pixels
-    for(i = 0; i < (size*size); i++) {
+    for(i = 0; i < (size*(size*9/16)); i++) {
         const pixel = document.createElement("div");
         // pixel.style.cssText = "box-sizing: border-box; background-color: gray; flex: 1; border: 0.1px solid black;";
         pixel.style.boxSizing = "border-box";
         pixel.style.width = pixelSize + "px";
+        pixel.style.height = pixelSize + "px";
         pixel.style.backgroundColor = "lightgray";
         // pixel.style.border = "0.1px solid white";
         pixel.classList.add("pixel");
         screen.appendChild(pixel);
     }
-    blackPix();
-    showRes();
 }
 
 function blackPix() {
@@ -154,7 +139,7 @@ function showRes() {
     // Display resolution value. Clear old text.
     // slideContainer.removeChild(lastChild);
     const resolution = document.createElement("div");
-    resolution.textContent = `Resolution: ${slider.value} x ${slider.value}`;
+    resolution.textContent = `${slider.value} x ${slider.value*9/16}`;
     slideContainer.appendChild(resolution);
     slideContainer.removeChild(resolution.previousSibling);
 }

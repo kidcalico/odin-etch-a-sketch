@@ -9,19 +9,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bytesized&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="container"></div>
-    <div class="controlcenter">
-        <div class="slidecontainer">
-            <div>Change Resolution:</div>
-            <input type="range" min="16" max="100" value="10" id="slider">
-        </div>
-        <div class="buttons">
-            <button id="blackbtn"></button>
-            <button id="colorbtn"></button>
-            <!-- <button id="shaderbtn"></button> -->
-            <button id="clearbtn"></button>
+    <div id="screen-container">
+        <div class="border">
+            <header>
+                <h1>Pixel Pusher</h1>
+            </header>
+            <div class="screen"></div>
+            <div class="controlcenter">
+                <div class="slidecontainer">
+                    <span>Resolution:</span>
+                    <input type="range" min="4" max="100" value="16" id="slider">
+                </div>
+                <div class="buttons">
+                    <button id="blackbtn"></button>
+                    <button id="colorbtn"></button>
+                    <!-- <button id="shaderbtn"></button> -->
+                    <button id="clearbtn"></button>
+                </div>
+            </div>
         </div>
     </div>
 </body>

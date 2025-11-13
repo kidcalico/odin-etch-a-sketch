@@ -1,9 +1,44 @@
-#container {
+body {
+    background-color: #dbffa4;
+}
+
+#screen-container {
     /* width: 540px;
     height: 540px; */
     /* background-color: lightgray; */
-    /* margin: 0 auto; */
+    margin: 30px auto;
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
+    color: #FACE2D;
+    font-family: "Bytesized", Futura, sans-serif;
+    color: #FACE2D;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+    margin: 10px;
+}
+
+button {
+    background-color: #FACE2D;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: #000;
+    font-family: "Bytesized", Futura, sans-serif;
+    font-size: 18px;
+    box-shadow: 0 3px #000;
+}
+
+button:hover {
+    background-color: #000;
+    color: #FACE2D;
+    box-shadow: 0 3px #FACE2D;
+}
+
+button:active {
+    box-shadow: 0 1px #FACE2D;
+    transform: translateY(2px);
 }
