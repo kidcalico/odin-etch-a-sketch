@@ -7,7 +7,7 @@ border.style.cssText = "width: 640px; height: 720px; background-color: #B7161E; 
 
 // Create screen element within the container
 const screen = document.querySelector(".screen");
-screen.style.cssText = "width: 540px; height: 540px; background-color: lightgray; margin: auto; padding: 0; display: flex; flex-wrap: wrap;";
+screen.style.cssText = "width: 540px; height: 540px; background-color: #fff7daff; margin: auto; padding: 0; display: flex; flex-wrap: wrap;";
 
 // Control center
 const controlCenter = document.querySelector(".controlcenter");

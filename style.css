@@ -73,3 +73,18 @@ button:active {
 .res {
     text-align: center;
 }
+
+.madeby {
+    font-family: "Bytesized";
+    text-align: center;
+    color: #B7161E;
+}
+
+a {
+    color:#FACE2D;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #B7161E;
+}
