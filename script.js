@@ -91,6 +91,21 @@ function blackPix() {
             event.target.style.backgroundColor = "#0c042a";
             event.target.style.opacity = 1;
         });
+        pixel.addEventListener("touchstart", (event) => {
+            event.preventDefault();
+            event.target.style.backgroundColor = "#0c042a";
+            event.target.style.opacity = 1;
+        });
+        pixel.addEventListener("touchmove", (event) => {
+            event.preventDefault();
+            event.target.style.backgroundColor = "#0c042a";
+            event.target.style.opacity = 1;
+        });
+        pixel.addEventListener("touchend", (event) => {
+            event.preventDefault();
+            event.target.style.backgroundColor = "#0c042a";
+            event.target.style.opacity = 1;
+        });
     });
 }
 
